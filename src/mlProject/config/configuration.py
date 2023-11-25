@@ -1,6 +1,6 @@
 from mlProject.constants import *
 from mlProject.utils.common import read_yaml, create_directories
-from mlProject.entity.config_entity import DataIngestionConfig
+from mlProject.entity.config_entity import DataIngestionConfig, Datavalidationconfig
 
 class ConfigurationManager():
     def __init__(self,config_filepath = CONFIG_FILE_PATH,params_filepath=PARAMS_FILE_PATH,schema_filepath=SCHEMA_FILE_PATH):
@@ -23,3 +23,18 @@ class ConfigurationManager():
         )
 
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> Datavalidationconfig:
+        config = self.config.data_validation
+        schema = self.schema.COLUMNS
+
+        create_directories([config.root_dir])
+
+        data_validation_config = Datavalidationconfig(
+            root_dir=config.root_dir,
+            file_dir=config.file_dir,
+            status_file=config.status_file,
+            all_schema=schema
+        )
+
+        return data_validation_config

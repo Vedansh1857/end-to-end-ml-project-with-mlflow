@@ -5,3 +5,8 @@ data_ingestion:
   root_dir: artifacts/data_ingestion
   local_data_file: artifacts/data_ingestion/winequality-red.csv
   download_dir: artifacts/data_ingestion/winequality-red.csv
+
+data_validation:
+  root_dir: artifacts/data_validation
+  file_dir: artifacts/data_ingestion/winequality-red.csv
+  status_file: artifacts/data_validation/status.txt
