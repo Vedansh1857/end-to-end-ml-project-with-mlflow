@@ -8,6 +8,8 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from sklearn.metrics import r2_score
 
 @ensure_annotations # We use this to ensure that the datatype passed is same as mentioned & if it is different, user will get an error
 def read_yaml(path_to_yaml: Path) -> ConfigBox: # We are returning a 'ConfigBox' type value so that we can read the content just by the keyname
@@ -118,3 +120,30 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+@ensure_annotations
+def evaluate_models(x_train, y_train,x_test,y_test,models,params) -> ConfigBox:
+    try:
+        report = {}
+        for i in range(len(list(models))):
+            model = list(models.values())[i]
+            para = params[list(models.keys())[i]]
+
+            rs = GridSearchCV(model,para,cv=3)
+            rs.fit(x_train,y_train)
+            model.set_params(**rs.best_params_)
+            print(rs.best_estimator_)
+            print(rs.best_params_)
+
+            model.fit(x_train, y_train)  # Train model
+            y_train_pred = model.predict(x_train)
+            y_test_pred = model.predict(x_test)
+
+            train_model_score = r2_score(y_train, y_train_pred)
+            test_model_score = r2_score(y_test, y_test_pred)
+            report[list(models.keys())[i]] = test_model_score
+
+        return ConfigBox(report)
+
+    except Exception as e:
+        raise e

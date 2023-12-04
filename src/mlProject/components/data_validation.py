@@ -17,8 +17,8 @@ class DataValidation():
             s3 = boto3.resource(
                 service_name='s3',
                 region_name='us-east-1',
-                aws_access_key_id = '',
-                aws_secret_access_key = ''
+                aws_access_key_id = 'AKIAU473WEHAZP5Q63UT',
+                aws_secret_access_key = '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'
             )
 
             obj = s3.Bucket('vedanshaws').Object('winequality-red.csv').get()
