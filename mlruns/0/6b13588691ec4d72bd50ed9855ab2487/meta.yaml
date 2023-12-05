@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/end-to-end-ml-project-with-mlflow/mlruns/0/6b13588691ec4d72bd50ed9855ab2487/artifacts
+end_time: 1701755931464
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6b13588691ec4d72bd50ed9855ab2487
+run_name: debonair-shrimp-49
+run_uuid: 6b13588691ec4d72bd50ed9855ab2487
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1701755926333
+status: 3
+tags: []
+user_id: vedan
