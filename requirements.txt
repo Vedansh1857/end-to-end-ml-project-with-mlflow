@@ -15,4 +15,5 @@ Flask
 Flask-Cors
 boto3
 s3fs
+gunicorn
 -e .
