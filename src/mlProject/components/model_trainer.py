@@ -1,5 +1,4 @@
 import os
-from mlProject import logger
 import joblib
 import pandas as pd
 from mlProject.components.data_transformation import DataTransformation
