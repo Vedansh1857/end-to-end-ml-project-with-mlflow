@@ -163,4 +163,6 @@ MLflow
  - Trace all of your expriements
  - Logging & tagging your model
 
+## Deployed on heroku also
+http://wine-quality-predictor-ecbd61954617.herokuapp.com/
 
